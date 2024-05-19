@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Reviews</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      #navbarNav {
+        background-color: rgb(243, 243, 243);
+        border-radius: 20px;
+      }
+
+      .nav-item {
+        padding: 10px;
+      }
+      .nav-link {
+        color: black;
+      }
+      .logo {
+        color: black;
+      }
+      .logo:hover {
+        text-decoration: none;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url("image/review.jpg") center center no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      /* Review Styles */
+      .reviews {
+        text-align: center;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .review-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .review {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 20px;
+        background-color: rgb(144, 139, 139);
+        cursor: pointer;
+        flex: 0 0 calc(30% - 40px);
+        box-sizing: border-box;
+        animation: pop-up 0.5s ease;
+        position: relative; /* Added relative position */
+      }
+      .footer {
+        background-color: rgb(232, 232, 232);
+      }
+      .rating {
+        color: #ffd700; /* Yellow color for star rating */
+      }
+
+      /* Pause the animation on hover */
+      /* Hover effect for image popup */
+      .review:hover {
+        transform: scale(1.05); /* Scale the review on hover */
+        transition: transform 0.2s ease; /* Add a smooth transition effect */
+      }
+
+      /* Button Styles */
+      .buttons {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+      }
+
+      #readAloudBtn,
+      #stopReadAloudBtn {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px 0;
+        transition: background-color 0.3s;
+      }
+
+      #readAloudBtn:hover,
+      #stopReadAloudBtn:hover {
+        background-color: #45a049;
+      }
+      .review-link {
+        font-weight: bold; /* Make the text bold */
+        color: #007bff; /* Change the text color to blue */
+        font-size: 16px; /* Increase the font size for better visibility */
+      }
+
+      .review-link a {
+        text-decoration: black; /* Remove underline from the anchor element */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <div class="navbar-toggle-container">
+      <nav class="navbar navbar-expand-lg">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img
+            src="image/3Lines.png"
+            alt="Toggle navigation"
+            width="30"
+            height="30"
+          />
+        </button>
+        <h3><a href="home.html" class="logo"> ASA Hotel</a></h3>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html" onfocus="readAloud('Home')"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="booking.html"
+                onfocus="readAloud('Booking')"
+                >Booking</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="payment.html"
+                onfocus="readAloud('Payment')"
+                >Payment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="contact.html"
+                onfocus="readAloud('Contact us')"
+                >Contact Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="review.html"
+                onfocus="readAloud('Review')"
+                >Review</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="login.html"
+                onfocus="readAloud('Login/Register')"
+                >Login/Register</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <header>
+      <!-- Your header content here -->
+    </header>
+
+    <section class="reviews">
+      <h1>Guest Reviews</h1>
+
+      <div class="review-container">
+        <!-- Review 1 -->
+        <div class="review">
+          <h2>Wonderful Stay</h2>
+          <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</p>
+          <p>
+            We had a fantastic time at the hotel. The staff was friendly, the
+            room was comfortable, and the food was delicious.
+          </p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review">
+          <h2>Great Experience</h2>
+          <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</p>
+          <p>
+            The hotel's location was convenient, and the amenities were
+            top-notch. Only minor improvements needed.
+          </p>
+        </div>
+        <div class="review">
+          <h2>Wonderful Stay</h2>
+          <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</p>
+          <p>
+            We had a fantastic time at the hotel. The staff was friendly, the
+            room was comfortable, and the food was delicious.
+          </p>
+        </div>
+        <div class="review">
+          <h2>Great Experience</h2>
+          <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</p>
+          <p>
+            The hotel's location was convenient, and the amenities were
+            top-notch. Only minor improvements needed.
+          </p>
+        </div>
+        <div class="review">
+          <h2>Wonderful Stay</h2>
+          <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</p>
+          <p>
+            We had a fantastic time at the hotel. The staff was friendly, the
+            room was comfortable, and the food was delicious.
+          </p>
+        </div>
+        <div class="review">
+          <h2>Great Experience</h2>
+          <p class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</p>
+          <p>
+            The hotel's location was convenient, and the amenities were
+            top-notch. Only minor improvements needed.
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="buttons"></div>
+
+    <script>
+      // Function to start reading the content aloud
+      function readAloud(content) {
+        // const content = 'First Name';
+        const utterance = new SpeechSynthesisUtterance(content);
+        speechSynthesis.speak(utterance);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Hotel</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      #navbarNav {
+        background-color: rgb(243, 243, 243);
+        border-radius: 20px;
+      }
+
+      .nav-item {
+        padding: 10px;
+      }
+      .nav-link {
+        color: black;
+      }
+      .footer {
+        background-color: rgb(232, 232, 232);
+        padding: 10px;
+        margin-top: 20px;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+      :root {
+        --primary-color: #2c3855;
+        --primary-color-dark: #435681;
+        --text-dark: #333333;
+        --text-light: #767268;
+        --extra-light: #f3f4f6;
+        --white: #ffffff;
+        --max-width: 1200px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .logo {
+        color: black;
+      }
+      .logo:hover {
+        text-decoration: none;
+      }
+      .section__container {
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 5rem 1rem;
+      }
+
+      .section__header {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        text-align: center;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        width: 100%;
+        display: flex;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .header__container {
+        padding: 1rem 1rem 5rem 1rem;
+      }
+
+      .header__image__container {
+        position: relative;
+        min-height: 500px;
+        background-image: linear-gradient(
+            to right,
+            rgba(44, 56, 85, 0.9),
+            rgba(100, 125, 187, 0.1)
+          ),
+          url("assets/header.jpg");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 2rem;
+      }
+
+      .header__content {
+        max-width: 600px;
+        padding: 5rem 2rem;
+      }
+
+      .header__content h1 {
+        margin-bottom: 1rem;
+        font-size: 3.5rem;
+        line-height: 4rem;
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .header__content p {
+        color: var(--extra-light);
+      }
+
+      .booking__container {
+        position: absolute;
+        bottom: -5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 6rem);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 3rem 2rem;
+        border-radius: 2rem;
+        background-color: rgba(255, 255, 255, 0.7);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .booking__container form {
+        width: 100%;
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+
+      .booking__container .input__group {
+        width: 100%;
+        position: relative;
+      }
+
+      .booking__container label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--text-dark);
+        pointer-events: none;
+        transition: 0.3s;
+      }
+
+      .booking__container input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 1rem;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #2c3855;
+        color: var(--text-dark);
+      }
+
+      .booking__container input:focus ~ label {
+        font-size: 0.8rem;
+        top: 0;
+      }
+
+      .booking__container .form__group p {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--text-light);
+      }
+
+      .booking__container .btn {
+        padding: 1rem;
+        outline: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--white);
+        background-color: #2c3855;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .booking__container .btn:hover {
+        background-color: #435681;
+      }
+
+      .popular__grid {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .popular__card {
+        overflow: hidden;
+        border-radius: 1rem;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .popular__content {
+        padding: 1rem;
+      }
+
+      .popular__card__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .popular__card__header h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .popular__content p {
+        color: var(--text-light);
+      }
+
+      @media (width < 900px) {
+        .booking__container form {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .popular__grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+      }
+
+      @media (width < 600px) {
+        .nav__links {
+          display: none;
+        }
+
+        .header__container {
+          padding-bottom: 25rem;
+        }
+
+        .booking__container {
+          flex-direction: column;
+          bottom: -25rem;
+        }
+
+        .booking__container form {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
+        .popular__grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="navbar-toggle-container">
+      <nav class="navbar navbar-expand-lg">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img
+            src="image/3Lines.png"
+            alt="Toggle navigation"
+            width="30"
+            height="30"
+          />
+        </button>
+        <h3><a href="home.html" class="logo"> ASA Hotel</a></h3>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html" onfocus="speak('Home')"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="booking.html" onfocus="speak('Booking')"
+                >Booking</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="payment.html" onfocus="speak('Payment')"
+                >Payment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="contact.html"
+                onfocus="speak('Contact us')"
+                >Contact Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="review.html" onfocus="speak('Review')"
+                >Review</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="login.html"
+                onfocus="speak('Login/Register')"
+                >Login/Register</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero section  -->
+    <header class="section__container header__container">
+      <div class="header__image__container">
+        <div class="header__content">
+          <h1>Enjoy Your Dream Vacation</h1>
+          <p>Book Hotels, Flights and stay packages at lowest price.</p>
+        </div>
+        <div class="booking__container">
+          <form>
+            <div class="form__group">
+              <div class="input__group">
+                <input type="text" />
+                <label>Location</label>
+              </div>
+              <p>Where are you going?</p>
+            </div>
+            <div class="form__group">
+              <div class="input__group">
+                <input type="text" />
+                <label>Check In</label>
+              </div>
+              <p>Add date</p>
+            </div>
+            <div class="form__group">
+              <div class="input__group">
+                <input type="text" />
+                <label>Check Out</label>
+              </div>
+              <p>Add date</p>
+            </div>
+            <div class="form__group">
+              <div class="input__group">
+                <input type="text" />
+                <label>Guests</label>
+              </div>
+              <p>Add guests</p>
+            </div>
+          </form>
+          <button class="btn"><i class="ri-search-line"></i></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Popular hotel section -->
+    <section class="section__container popular__container">
+      <h2 class="section__header">Popular Hotels</h2>
+      <div class="popular__grid">
+        <div class="popular__card">
+          <img src="assets/hotel-1.jpg" alt="popular hotel" />
+          <div class="popular__content">
+            <div class="popular__card__header">
+              <h4>The Plaza Hotel</h4>
+              <h4>$499</h4>
+            </div>
+            <p>New York City, USA</p>
+          </div>
+        </div>
+        <div class="popular__card">
+          <img src="assets/hotel-2.jpg" alt="popular hotel" />
+          <div class="popular__content">
+            <div class="popular__card__header">
+              <h4>Ritz Paris</h4>
+              <h4>$549</h4>
+            </div>
+            <p>Paris, France</p>
+          </div>
+        </div>
+        <div class="popular__card">
+          <img src="assets/hotel-3.jpg" alt="popular hotel" />
+          <div class="popular__content">
+            <div class="popular__card__header">
+              <h4>The Peninsula</h4>
+              <h4>$599</h4>
+            </div>
+            <p>Hong Kong</p>
+          </div>
+        </div>
+        <div class="popular__card">
+          <img src="assets/hotel-4.jpg" alt="popular hotel" />
+          <div class="popular__content">
+            <div class="popular__card__header">
+              <h4>Atlantis The Palm</h4>
+              <h4>$449</h4>
+            </div>
+            <p>Dubai, United Arab Emirates</p>
+          </div>
+        </div>
+        <div class="popular__card">
+          <img src="assets/hotel-5.jpg" alt="popular hotel" />
+          <div class="popular__content">
+            <div class="popular__card__header">
+              <h4>The Ritz-Carlton</h4>
+              <h4>$649</h4>
+            </div>
+            <p>Tokyo, Japan</p>
+          </div>
+        </div>
+        <div class="popular__card">
+          <img src="assets/hotel-6.jpg" alt="popular hotel" />
+          <div class="popular__content">
+            <div class="popular__card__header">
+              <h4>Marina Bay Sands</h4>
+              <h4>$549</h4>
+            </div>
+            <p>Singapore</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Contact Us</h3>
+            <p><strong>ABA Hotel</strong></p>
+            <p>112 Sector 13, Banglore</p>
+            <p>Banglore, India</p>
+            <p>Email: enquiry@abahotels.com</p>
+            <p>Phone: +91 6351670000</p>
+          </div>
+          <div class="col-md-4">
+            <h3>Connect with Us</h3>
+            <ul class="list-unstyled social-icons">
+              <li>
+                <a href="#"><i class="fab fa-facebook">Facebook</i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter">Twitter</i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram">Instagram</i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h3>Newsletter</h3>
+            <p>
+              Subscribe to our newsletter to receive updates and special offers.
+            </p>
+            <form>
+              <div class="input-group mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email Address"
+                  aria-label="Email Address"
+                  aria-describedby="newsletter-button"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="newsletter-button"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="text-center">
+              &copy; 2023 ABA Hotel. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Function to start reading the content aloud
+      function speak(content) {
+        // const content = 'First Name';
+        const utterance = new SpeechSynthesisUtterance(content);
+        speechSynthesis.speak(utterance);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Payment Gateway</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      #navbarNav {
+        background-color: rgb(243, 243, 243);
+        border-radius: 20px;
+      }
+
+      .nav-item {
+        padding: 10px;
+      }
+      .nav-link {
+        color: black;
+      }
+      .footer {
+        background-color: rgb(232, 232, 232);
+        padding: 10px;
+        margin-top: 20px;
+      }
+      header {
+        width: 100vw;
+        min-height: 100vh;
+        background: #34495e;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .pcontainer {
+        background: white;
+        max-width: 1000px;
+        min-height: 500px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 1.5rem;
+      }
+      .left {
+        flex-basis: 50%;
+      }
+      .right {
+        flex-basis: 50%;
+      }
+      form {
+        padding: 1rem;
+      }
+      h3 {
+        margin-top: 1rem;
+        color: #2c3e50;
+      }
+      form input[type="text"] {
+        width: 100%;
+        padding: 0.5rem 0.7rem;
+        margin: 0.5rem 0;
+        outline: none;
+      }
+      .logo {
+        color: black;
+      }
+      .logo:hover {
+        text-decoration: none;
+      }
+      form input[type="email"] {
+        width: 100%;
+        padding: 0.5rem 0.7rem;
+        margin: 0.5rem 0;
+        outline: none;
+      }
+      #zip {
+        display: flex;
+        margin-top: 0.5rem;
+      }
+      #zip select {
+        padding: 0.5rem 0.7rem;
+      }
+      #zip input[type="number"] {
+        padding: 0.5rem 0.7rem;
+        margin-left: 5px;
+      }
+      #zip1 {
+        display: flex;
+        margin-top: 0.5rem;
+      }
+      #zip1 select {
+        padding: 0.5rem 0.7rem;
+        width: 100%;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 0.7rem 1.5rem;
+        background: #34495e;
+        color: white;
+        border: none;
+        outline: none;
+        margin-top: 1rem;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background: #2c3e50;
+      }
+      @media only screen and (mad-width: 770px) {
+        .pcontainer {
+          flex-direction: column;
+        }
+        .left {
+          flex-direction: column;
+        }
+        .right {
+          flex-direction: column;
+        }
+        body {
+          overflow-x: hidden;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="navbar-toggle-container">
+      <nav class="navbar navbar-expand-lg">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img
+            src="image/3Lines.png"
+            alt="Toggle navigation"
+            width="30"
+            height="30"
+          />
+        </button>
+        <h3><a href="home.html" class="logo"> ASA Hotel</a></h3>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html" onfocus="speak('Home')"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="booking.html" onfocus="speak('Booking')"
+                >Booking</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="payment.html" onfocus="speak('Payment')"
+                >Payment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="contact.html"
+                onfocus="speak('Contact us')"
+                >Contact Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="review.html" onfocus="speak('Review')"
+                >Review</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="login.html"
+                onfocus="speak('Login/Register')"
+                >Login/Register</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <header>
+      <div class="pcontainer">
+        <div class="left">
+          <h3>BILLING ADDRESS</h3>
+          <form onsubmit="return validateBillingForm()">
+            Full name
+            <input
+              type="text"
+              id="fullname"
+              placeholder="Enter Name"
+              required
+            />
+            <span id="fullnameError" class="error"></span>
+            Email
+            <input type="email" id="email" placeholder="Enter email" required />
+            <span id="emailError" class="error"></span>
+            Address
+            <input
+              type="text"
+              id="address"
+              placeholder="Enter Address"
+              required
+            />
+            <span id="addressError" class="error"></span>
+            City
+            <input type="text" id="city" placeholder="Enter City" required />
+            <span id="cityError" class="error"></span>
+            <div id="zip">
+              <label>
+                State
+                <select id="state" required>
+                  <option value="">Choose State</option>
+                  <option>Karnataka</option>
+                  <option>Kerala</option>
+                  <option>Maharashtra</option>
+                  <option>Tamil Nadu</option>
+                  <option>Delhi</option>
+                  <option>Rajasthan</option>
+                  <option>Uttar Pradesh</option>
+                </select>
+              </label>
+              <span id="stateError" class="error"></span>
+              <label>
+                Zip code
+                <input
+                  type="number"
+                  id="zipCode"
+                  placeholder="Enter Zip code"
+                  required
+                />
+              </label>
+              <span id="zipCodeError" class="error"></span>
+            </div>
+            <input type="submit" name="" value="Save the Billing address" />
+          </form>
+        </div>
+        <div class="right">
+          <h3>PAYMENT</h3>
+          <form onsubmit="return validatePaymentForm()">
+            Accepted Cards <br />
+            <img src="visa.png" width="75" />
+            <img src="masterc.jpg" width="75" />
+            <br /><br />
+            Credit Card Number
+            <input
+              type="text"
+              id="cardNumber"
+              placeholder="Enter Card Number"
+              required
+              maxlength="16"
+            />
+            <span id="cardNumberError" class="error"></span>
+            <div id="zip1">
+              <label>
+                Exp Month
+                <select id="expMonth" required>
+                  <option value="">Choose Month</option>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+                </select>
+              </label>
+              <span id="expMonthError" class="error"></span>
+            </div>
+            <div id="zip">
+              <label>
+                Exp Year
+                <select id="expYear" required>
+                  <option value="">Choose Year</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                  <option>2026</option>
+                  <option>2027</option>
+                  <option>2028</option>
+                  <option>2029</option>
+                  <option>2030</option>
+                </select>
+              </label>
+              <span id="expYearError" class="error"></span>
+              <label>
+                CVV
+                <input type="number" id="cvv" placeholder="CVV" required />
+              </label>
+              <span id="cvvError" class="error"></span>
+            </div>
+            <input type="submit" name="" value="Proceed to checkout" />
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Contact Us</h3>
+            <p><strong>ABA Hotel</strong></p>
+            <p>112 Sector 13, Banglore</p>
+            <p>Banglore, India</p>
+            <p>Email: enquiry@abahotels.com</p>
+            <p>Phone: +91 6351670000</p>
+          </div>
+          <div class="col-md-4">
+            <h3>Connect with Us</h3>
+            <ul class="list-unstyled social-icons">
+              <li>
+                <a href="#"><i class="fab fa-facebook">Facebook</i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter">Twitter</i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram">Instagram</i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h3>Newsletter</h3>
+            <p>
+              Subscribe to our newsletter to receive updates and special offers.
+            </p>
+            <form>
+              <div class="input-group mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email Address"
+                  aria-label="Email Address"
+                  aria-describedby="newsletter-button"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="newsletter-button"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="text-center">
+              &copy; 2023 ABA Hotel. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Function to start reading the content aloud
+      function speak(content) {
+        // const content = 'First Name';
+        const utterance = new SpeechSynthesisUtterance(content);
+        speechSynthesis.speak(utterance);
+      }
+
+      // Function to validate the billing address form
+      function validateBillingForm() {
+        // Reset errors
+        resetErrors();
+
+        // Get form elements
+        const fullname = document.getElementById("fullname").value;
+        const email = document.getElementById("email").value;
+        const address = document.getElementById("address").value;
+        const city = document.getElementById("city").value;
+        const state = document.getElementById("state").value;
+        const zipCode = document.getElementById("zipCode").value;
+
+        let valid = true; // Assume the form is valid by default
+
+        // Validate full name
+        if (fullname.trim() === "") {
+          displayError("fullnameError", "Full name is required");
+          valid = false;
+        }
+
+        // Validate email
+        if (!isValidEmail(email)) {
+          displayError("emailError", "Invalid email address");
+          valid = false;
+        }
+
+        // Validate address
+        if (address.trim() === "") {
+          displayError("addressError", "Address is required");
+          valid = false;
+        }
+
+        // Validate city
+        if (city.trim() === "") {
+          displayError("cityError", "City is required");
+          valid = false;
+        }
+
+        // Validate state
+        if (state === "") {
+          displayError("stateError", "Please select a state");
+          valid = false;
+        }
+
+        // Validate zip code
+        if (zipCode.trim() === "" || isNaN(zipCode)) {
+          displayError("zipCodeError", "Invalid zip code");
+          valid = false;
+        }
+
+        return valid;
+      }
+
+      // Function to validate the payment form
+      function validatePaymentForm() {
+        // Reset errors
+        resetErrors();
+
+        // Get form elements
+        const cardNumber = document.getElementById("cardNumber").value;
+        const expMonth = document.getElementById("expMonth").value;
+        const expYear = document.getElementById("expYear").value;
+        const cvv = document.getElementById("cvv").value;
+
+        let valid = true; // Assume the form is valid by default
+
+        // Validate card number
+        if (
+          cardNumber.trim() === "" ||
+          isNaN(cardNumber) ||
+          cardNumber.length !== 16
+        ) {
+          displayError("cardNumberError", "Invalid card number");
+          valid = false;
+        }
+
+        // Validate expiration month
+        if (expMonth === "") {
+          displayError("expMonthError", "Please select an expiration month");
+          valid = false;
+        }
+
+        // Validate expiration year
+        if (expYear === "") {
+          displayError("expYearError", "Please select an expiration year");
+          valid = false;
+        }
+
+        // Validate CVV
+        if (cvv.trim() === "" || isNaN(cvv) || cvv.length !== 3) {
+          displayError("cvvError", "Invalid CVV");
+          valid = false;
+        }
+
+        return valid;
+      }
+
+      function isValidEmail(email) {
+        // A simple email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function displayError(fieldId, errorMessage) {
+        const errorSpan = document.getElementById(fieldId);
+        errorSpan.textContent = errorMessage;
+      }
+
+      function resetErrors() {
+        // Reset all error messages
+        const errorElements = document.querySelectorAll(".error");
+        for (const errorElement of errorElements) {
+          errorElement.textContent = "";
+        }
+      }
+    </script>
+  </body>
+</html>

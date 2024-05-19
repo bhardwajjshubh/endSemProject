@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #navbarNav {
+        background-color: rgb(243, 243, 243);
+        border-radius: 20px;
+      }
+
+      .nav-item {
+        padding: 10px;
+      }
+      .nav-link {
+        color: black;
+      }
+      .footer {
+        background-color: rgb(232, 232, 232);
+      }
+
+      .contact-bg {
+        background-image: url("/image/two.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        color: #fff;
+      }
+
+      .contact-content h2 {
+        font-size: 36px;
+      }
+      .logo {
+        color: black;
+      }
+      .logo:hover {
+        text-decoration: none;
+      }
+      h2,
+      h3 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="navbar-toggle-container">
+      <nav class="navbar navbar-expand-lg">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img
+            src="/image/3Lines.png"
+            alt="Toggle navigation"
+            width="30"
+            height="30"
+          />
+        </button>
+        <h3><a href="home.html" class="logo"> ASA Hotel </a></h3>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html" onfocus="speak('Home')"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="booking.html" onfocus="speak('Booking')"
+                >Booking</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="payment.html" onfocus="speak('Payment')"
+                >Payment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="contact.html"
+                onfocus="speak('Contact Us')"
+                >Contact Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="review.html" onfocus="speak('Review')"
+                >Review</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="login.html"
+                onfocus="speak('Login/Register')"
+                >Login/Register</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Contact us form -->
+    <div class="container-fluid p-0">
+      <div class="contact-bg">
+        <h2>ASA HOTEL</h2>
+        <marquee behavior="" direction=""
+          >Welcome to ASA Hotel. Your Query will mustly resolve in 24 Hours.
+          We're Looking Forward To Having You Again As Our Guest. Thank
+          You</marquee
+        >
+        <div class="container contact-content">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Contact Form</h3>
+              <form>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="tel">Mobile No</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="tel"
+                    placeholder="Your Mobile No."
+                    pattern="[0-9]{10}"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="4"
+                    placeholder="Your Message"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  onfocus="speak('Submit')"
+                  id="submit-button"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>ASA Hotel</h1>
+            <p>112 Sector 13, Banglore</p>
+            <p>Banglore, India</p>
+            <p>Email: enquiry@abahotels.com</p>
+            <p>Phone: +91 6351670000</p>
+          </div>
+          <div class="col-md-4">
+            <h4>Connect with Us</h4>
+            <ul class="list-unstyled social-icons">
+              <li>
+                <a href="#"><i class="fab fa-facebook">Facebook</i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter">Twitter</i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram">Instagram</i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Newsletter</h4>
+            <p>
+              Subscribe to our newsletter to receive updates and special offers.
+            </p>
+            <form>
+              <div class="input-group mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email Address"
+                  aria-label="Email Address"
+                  aria-describedby="newsletter-button"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="newsletter-button"
+                    onfocus="speak('Subscribe')"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="text-center">
+              &copy; 2023 ASA Hotel. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // Function to start reading the content aloud
+      function speak(content) {
+        // const content = 'First Name';
+        const utterance = new SpeechSynthesisUtterance(content);
+        speechSynthesis.speak(utterance);
+      }
+    </script>
+  </body>
+</html>

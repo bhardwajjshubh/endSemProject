@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Booking Sign Up</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      /* Add your styles here */
+      #navbarNav {
+        background-color: rgb(243, 243, 243);
+        border-radius: 20px;
+      }
+
+      .nav-item {
+        padding: 10px;
+      }
+
+      .nav-link {
+        color: black;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        background: url("image/hotelsignin.jpg") center center no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto; /* Center the container horizontally */
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 50%; /* Center the container vertically */
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label,
+      input,
+      select {
+        margin: 10px 0;
+      }
+
+      .error {
+        color: red;
+      }
+
+      .btn {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <br /><br />
+    <div class="container">
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name">First Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                required
+                ondblclick="readAloud('First Name', this)"
+              />
+              <div class="error" id="name-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                required
+                ondblclick="readAloud('Email', this)"
+              />
+              <div class="error" id="email-error"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Lastname">Last Name:</label>
+              <input
+                type="text"
+                id="Lastname"
+                name="Lastname"
+                class="form-control"
+                required
+                ondblclick="readAloud('Last Name', this)"
+              />
+              <div class="error" id="Lastname-error"></div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                required
+                ondblclick="readAloud('Password', this)"
+              />
+              <div class="error" id="password-error"></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label
+            for="validationCustomUsername"
+            class="form-label"
+            ondblclick="readAloud('Username', this)"
+            >Username</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label
+            for="validationCustom04"
+            class="form-label"
+            ondblclick="readAloud('State', this)"
+            >State</label
+          >
+          <select class="form-select" id="validationCustom04" required>
+            <option selected disabled value="">Choose Your State</option>
+            <option>Maharashtra</option>
+            <option>Karnataka</option>
+            <option>Jammu & Kashmir</option>
+            <option>Gujrat</option>
+            <option>Bengal</option>
+            <option>Haryana</option>
+            <option>Oddisa</option>
+            <option>Tamil Nadu</option>
+            <option>Kerla</option>
+            <option>Uttar Pradesh</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          id="submit-button"
+          class="btn"
+          ondblclick="readAloud('Sign Up', this)"
+        >
+          Sign Up
+        </button>
+        <p class="login-link">
+          Already have an account? <a href="login1.html">Login</a>
+        </p>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("submit-button")
+        .addEventListener("click", function () {
+          alert("Signup Successful");
+        });
+      // Define validation functions for each field
+      const validationFunctions = {
+        name: (value) =>
+          value.length < 3
+            ? "First Name must be at least 3 characters long."
+            : "",
+        Lastname: (value) =>
+          value.length < 3
+            ? "Last Name must be at least 3 characters long."
+            : "",
+        email: (value) =>
+          !validateEmail(value) ? "Invalid email address." : "",
+        password: (value) =>
+          value.length < 8
+            ? "Password must be at least 8 characters long."
+            : "",
+      };
+
+      // Add blur event listeners for the fields
+      const fields = ["name", "Lastname", "email", "password"];
+      fields.forEach((fieldName) => {
+        const field = document.getElementById(fieldName);
+        const errorField = document.getElementById(`${fieldName}-error`);
+
+        field.addEventListener("blur", () => {
+          const value = field.value;
+          const errorMessage = validationFunctions[fieldName](value);
+          errorField.textContent = errorMessage;
+        });
+      });
+
+      function validateEmail(email) {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+      }
+      function readAloud(label) {
+        const utterance = new SpeechSynthesisUtterance(label);
+        speechSynthesis.speak(utterance);
+        let fieldReadStatus = {}; // Create an object to track the read status of fields
+
+        function readAloud(label, field) {
+          if (!fieldReadStatus[field.id]) {
+            const utterance = new SpeechSynthesisUtterance(label);
+            speechSynthesis.speak(utterance);
+            fieldReadStatus[field.id] = true; // Mark the field as read
+            let fieldReadStatus = {}; // Create an object to track the read status of fields
+
+            function readAloud(label, field) {
+              if (!fieldReadStatus[field.id]) {
+                const utterance = new SpeechSynthesisUtterance(label);
+                speechSynthesis.speak(utterance);
+                fieldReadStatus[field.id] = true; // Mark the field as read
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
